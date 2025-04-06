@@ -30,10 +30,12 @@ export async function GET() {
               <name>${p.brand?.name + " " + p.name}</name>
               <categoryId>123</categoryId>
               <url>${BASE_URL}/catalog/product/${p.slug}</url>
-              ${p.images?.map(
-                (i) =>
-                  `<picture>${process.env.NEXT_PUBLIC_URL}${i.url}</picture>`
-              )}
+              ${p.images
+                ?.map(
+                  (i) =>
+                    `<picture>${process.env.NEXT_PUBLIC_URL}${i.url}</picture>`
+                )
+                .join("")}
               <price>${p.price}</price>
               <oldprice>${
                 p.sale
