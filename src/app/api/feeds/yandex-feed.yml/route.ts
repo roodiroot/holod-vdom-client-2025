@@ -27,10 +27,7 @@ export async function GET() {
           ${categories.data
             .map((type) => {
               return type.categories
-                .map(
-                  (cat) =>
-                    `<category url="${BASE_URL}/catalog/${type.slug}/${cat.slug}" id="${cat.documentId}">${cat.name}</category>`
-                )
+                .map((cat) => `<category id="${cat.id}">${cat.name}</category>`)
                 .join("");
             })
             .join("")}
@@ -40,7 +37,7 @@ export async function GET() {
           .map(
             (p) =>
               `
-            <offer id="${p.id}" type="vendor.model" available="${p.available}">
+            <offer id="${p.id}" available="${p.available}">
               <name>${
                 p.category?.name + " " + p.brand?.name + " " + p.name
               }</name>
@@ -61,7 +58,7 @@ export async function GET() {
                   : p.price
               }</oldprice>
               <currencyId>RUR</currencyId>
-              <categoryId>${p.category?.documentId}</categoryId>
+              <categoryId>${p.category?.id}</categoryId>
               <typePrefix>${p.category?.name}</typePrefix>
               <model>${p.series}</model>
               <vendor>${p.brand?.name}</vendor>
