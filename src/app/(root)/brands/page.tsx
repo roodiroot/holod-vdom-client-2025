@@ -1,0 +1,46 @@
+import Link from "next/link";
+import { Metadata } from "next";
+
+import { cn } from "@/lib/utils";
+import { beautifulFont } from "@/app/fonts";
+import { getAllBrandsApi } from "@/strapi-api/api/data/brands-api";
+
+export const metadata: Metadata = {
+  title: "Бренды",
+  description:
+    'Контакты интернет магазина "Холод в дом" — адреса, телефоны, почта. Свяжитесь с нами самим удобным способом.',
+};
+
+export default async function BrandsPage() {
+  const brands = await getAllBrandsApi();
+
+  return (
+    <div className="bg-white">
+      <div className="py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl lg:mx-0">
+            <h1
+              className={cn(
+                beautifulFont.className,
+                "text-4xl font-bold tracking-tight text-gray-900"
+              )}
+            >
+              Бренды
+            </h1>
+          </div>
+          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 leading-7 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+            {brands.data.map((brand) => (
+              <Link
+                key={brand.documentId}
+                href={`/brands/${brand.slug}`}
+                className="w-full aspect-[2/1] border rounded-lg p-6"
+              >
+                <h2 className="text-3xl font-bold">{brand.name}</h2>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
