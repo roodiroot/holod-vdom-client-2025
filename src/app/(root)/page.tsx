@@ -15,7 +15,7 @@ import { getAllProductsApi } from "@/strapi-api/api/data/products-api";
 
 const Home = async () => {
   // Fetch data from Strapi API
-  const params = new URLSearchParams({
+  const paramsHit = new URLSearchParams({
     "filters[hit][$eq]": "true",
     "filters[available][$eq]": "true",
     "fields[0]": "sale",
@@ -27,13 +27,26 @@ const Home = async () => {
     "populate[0]": "images",
     "populate[1]": "brand",
   });
+  const paramsSale = new URLSearchParams({
+    "filters[sale][$gt]": "0",
+    "filters[available][$eq]": "true",
+    "fields[0]": "sale",
+    "fields[1]": "name",
+    "fields[2]": "price",
+    "fields[3]": "slug",
+    "fields[4]": "area_of_room",
+    "fields[5]": "series",
+    "populate[0]": "images",
+    "populate[1]": "brand",
+  });
 
-  const products = await getAllProductsApi(params.toString());
+  const productsHit = await getAllProductsApi(paramsHit.toString());
+  const productsSale = await getAllProductsApi(paramsSale.toString());
 
   return (
     <main>
       <HeroBlock />
-      <ProductsSection products={products.data} />
+      <ProductsSection products={[productsHit.data, productsSale.data]} />
       <TableSection listAddWorks={listAddWorks} listWorks={listWorks} />
       <PromoSection />
       <DescriptionLinkSection />

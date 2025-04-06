@@ -28,6 +28,7 @@ const CardProductHero: React.FC<CardProductProps> = ({
   price,
   area_of_room,
   series,
+  sale,
   images,
   ...props
 }) => {
@@ -54,7 +55,11 @@ const CardProductHero: React.FC<CardProductProps> = ({
       <div className="relative aspect-[2/1.7] overflow-hidden">
         <div className="relative w-full h-full p-4 aspect-[2/1.7] bg-white  overflow-hidden rounded-b-lg">
           <div className="w-full h-full">
-            <span className="absolute inset-0"></span>
+            {sale && (
+              <span className="absolute top-4 left-4 px-2 py-0.5 bg-rose-500 text-white text-sm font-semibold rounded-md">
+                - {sale} %
+              </span>
+            )}
             <Image
               src={imageSrc}
               alt={`main_image`}

@@ -27,6 +27,7 @@ const CardProductStrapi: React.FC<CardProductProps> = ({
   price,
   area_of_room,
   series,
+  sale,
   images,
   ...props
 }) => {
@@ -49,6 +50,11 @@ const CardProductStrapi: React.FC<CardProductProps> = ({
       {...props}
       className="relative flex flex-col h-full overflow-hidden rounded-lg border border-gray-200 bg-white "
     >
+      {sale && (
+        <span className="absolute z-20 top-4 left-4 px-2 py-0.5 bg-rose-500 text-white text-sm font-semibold rounded-md">
+          - {sale} %
+        </span>
+      )}
       <div className="relative aspect-[2/1.7] overflow-hidden">
         {slider ? (
           <SliderCardProduct list={slider} />

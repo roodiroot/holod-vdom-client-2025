@@ -74,7 +74,12 @@ const Page: React.FC<{ params: { id: string } }> = async ({ params }) => {
                 "text-4xl font-bold tracking-tight text-gray-900"
               )}
             >
-              {product.brand?.name + " " + product.name}
+              {product.brand?.name + " " + product.name}{" "}
+              {product.sale && (
+                <span className="text-white px-3 py-1 bg-rose-500 inline-block rounded-md text-base font-medium">
+                  sale - {product.sale} %
+                </span>
+              )}
             </h1>
             <CharacteristicsBlockClient
               slug={product.slug}
@@ -123,9 +128,9 @@ const Page: React.FC<{ params: { id: string } }> = async ({ params }) => {
 
 export default Page;
 
-export async function generateStaticParams() {
-  const product = await getAllProductsApi();
-  return product.data.map((product: Product) => ({
-    id: product.slug,
-  }));
-}
+// export async function generateStaticParams() {
+//   const product = await getAllProductsApi();
+//   return product.data.map((product: Product) => ({
+//     id: product.slug,
+//   }));
+// }

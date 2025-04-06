@@ -69,6 +69,7 @@ export interface Product {
   product_catalog?: ProductCatalog;
   char?: Char[];
   file?: FileMetadata;
+  hit?: boolean;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
