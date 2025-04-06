@@ -12,6 +12,7 @@ export const getAllProductsApi = async (
     const response = await fetch(url, {
       method: "GET",
       signal: controller.signal,
+      next: { revalidate: 60 },
     });
 
     clearTimeout(timeout);
@@ -38,6 +39,7 @@ export const getProductBySlugApi = async (slug: string): Promise<Product> => {
     const response = await fetch(url, {
       method: "GET",
       signal: controller.signal,
+      next: { revalidate: 60 },
     });
 
     clearTimeout(timeout);
@@ -66,6 +68,7 @@ export const getProductSearchApi = async (
     const response = await fetch(url, {
       method: "GET",
       signal: controller.signal,
+      next: { revalidate: 60 },
     });
 
     clearTimeout(timeout);
