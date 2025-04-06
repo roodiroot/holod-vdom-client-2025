@@ -1,4 +1,3 @@
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import SearchInputWrapper from "./search-input-wrapper";
 
@@ -20,9 +19,9 @@ const SearchInput: React.FC<SearchInputProps> = ({ setSubmit }) => {
   return (
     <SearchInputWrapper>
       <input
-        type='text'
-        placeholder='Поиск'
-        className='w-full h-full bg-transparent outline-none'
+        type="text"
+        placeholder="Поиск"
+        className="w-full h-full bg-transparent outline-none"
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />

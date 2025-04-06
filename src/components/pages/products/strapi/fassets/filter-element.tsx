@@ -101,7 +101,7 @@ const FilterElement: React.FC<FilterElementProps> = ({
                     id={i || ""}
                     checked={checked}
                     onCheckedChange={(checked) =>
-                      handleCheckedChange(checked as boolean, i)
+                      handleCheckedChange(checked as boolean, i || "")
                     }
                   />
                   <label
