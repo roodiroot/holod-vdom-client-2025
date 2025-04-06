@@ -20,8 +20,9 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: slug,
-    description: `Устанавливаем климатическую технику ${slug} более 6 лет.`,
+    title: "Климатическая техника – выбирайте лучшее",
+    description:
+      "Каталог климатической техники: кондиционеры, тепловые пушки, очистители воздуха и другое оборудование.",
     openGraph: {
       images: ["/kondish.svg", ...previousImages],
     },

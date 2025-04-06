@@ -17,12 +17,12 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const slug = (await params).slug;
-  // const brand = await getBrandForSlug(slug);
+  const brand = await getBrandBySlugApi(slug);
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: slug,
-    description: `Устанавливаем климатическую технику ${slug} более 6 лет.`,
+    title: `Климатическая техника ${brand.name}`,
+    description: `Официальный каталог кондиционеров ${brand.name}. Широкий выбор моделей, c официальной гарантией, доставкой и установкой. 🚀`,
     openGraph: {
       images: ["/kondish.svg", ...previousImages],
     },

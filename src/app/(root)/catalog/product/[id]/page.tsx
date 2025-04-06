@@ -25,6 +25,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: product.brand?.name + " " + product?.name,
     description: `Кондиционер ${product.brand?.name} ${product?.name} купить с доставкой и установкой в магазине "Холод в дом".`,
+    openGraph: {
+      title: `${product.brand?.name} ${product?.name}`,
+      description: `Кондиционер ${product.brand?.name} ${product?.name} купить с доставкой и установкой в магазине "Холод в дом".`,
+      url: `https://holod-vdom.ru/catalog/product/${id}`,
+      images: [
+        {
+          url: product.images
+            ? process.env.NEXT_PUBLIC_URL + product.images[0].url
+            : "/image/kond.jpg", // Ставь дефолтную картинку, если у товара нет изображения
+          width: 1200,
+          height: 630,
+          alt: `${product.brand?.name} ${product?.name}`,
+        },
+      ],
+    },
   };
 }
 
