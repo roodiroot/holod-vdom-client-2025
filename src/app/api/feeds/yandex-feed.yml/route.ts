@@ -13,10 +13,6 @@ export async function GET() {
   const data = await getAllProductsApi(params.toString());
 
   const yml = ` <?xml version="1.0" encoding="UTF-8"?>
-  <yml_catalog date="${new Date()
-    .toISOString()
-    .slice(0, 16)
-    .replace("T", " ")}">
     <shop>
         <name>HOLOD V DOM</name>
         <company>Хлолд в дом</company>
@@ -81,7 +77,6 @@ export async function GET() {
           .join("")}
         </offers>
     </shop>
-  </yml_catalog>
   `;
 
   return new NextResponse(yml.trim(), {
