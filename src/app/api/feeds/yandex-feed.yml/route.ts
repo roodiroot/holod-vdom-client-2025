@@ -12,7 +12,7 @@ export async function GET() {
   });
 
   const data = await getAllProductsApi(params.toString());
-  const categories = await getAllCatalogApi();
+  const catalog = await getAllCatalogApi();
 
   const yml = `
   <yml_catalog date="${new Date()
@@ -24,11 +24,16 @@ export async function GET() {
         <company>Хлолд в дом</company>
         <url>${BASE_URL}/</url>
         <categories>
-          ${categories.data
+          ${catalog.data
             .map((type) => {
-              return type.categories
-                .map((cat) => `<category id="${cat.id}">${cat.name}</category>`)
-                .join("");
+              return `<category id="${type.id}" >${type.name}</category> 
+              ${type.categories
+                .map(
+                  (cat) =>
+                    `<category id="${cat.id}" parentId="${type.id}">${cat.name}</category>`
+                )
+                .join("")}
+              `;
             })
             .join("")}
         </categories>
