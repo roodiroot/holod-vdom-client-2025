@@ -12,7 +12,7 @@ export async function GET() {
 
   const data = await getAllProductsApi(params.toString());
 
-  const yml = `
+  const yml = ` <?xml version="1.0" encoding="UTF-8"?>
   <yml_catalog date="${new Date()
     .toISOString()
     .slice(0, 16)
@@ -84,7 +84,7 @@ export async function GET() {
   </yml_catalog>
   `;
 
-  return new NextResponse(yml, {
+  return new NextResponse(yml.trim(), {
     headers: {
       "Content-Type": "application/xml",
     },
