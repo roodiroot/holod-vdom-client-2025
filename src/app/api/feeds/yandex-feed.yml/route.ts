@@ -27,8 +27,9 @@ export async function GET() {
             (p) =>
               `
             <offer id="${p.id}" type="vendor.model" available="${p.available}">
-              <name>${p.brand?.name + " " + p.name}</name>
-              <categoryId>123</categoryId>
+              <name>${
+                p.category?.name + " " + p.brand?.name + " " + p.name
+              }</name>
               <url>${BASE_URL}/catalog/product/${p.slug}</url>
               ${p.images
                 ?.map(
@@ -39,8 +40,11 @@ export async function GET() {
               <price>${p.price}</price>
               <oldprice>${
                 p.sale
-                  ? (p.price || 0) * (p.sale / 100) + (p.price || 0)
-                  : p.sale
+                  ? `${
+                      (Number(p.price) || 0) * (Number(p.sale) / 100) +
+                      (Number(p.price) || 0)
+                    }`
+                  : p.price
               }</oldprice>
               <currencyId>RUR</currencyId>
               <typePrefix>${p.category?.name}</typePrefix>
