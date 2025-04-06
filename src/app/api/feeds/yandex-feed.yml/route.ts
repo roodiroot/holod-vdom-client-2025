@@ -1,3 +1,4 @@
+import { getAllCatalogApi } from "@/strapi-api/api/data/catalog-api";
 import { getAllProductsApi } from "@/strapi-api/api/data/products-api";
 import { NextResponse } from "next/server";
 
@@ -11,6 +12,7 @@ export async function GET() {
   });
 
   const data = await getAllProductsApi(params.toString());
+  const categories = await getAllCatalogApi();
 
   const yml = `
   <yml_catalog date="${new Date()
@@ -21,6 +23,18 @@ export async function GET() {
         <name>HOLOD V DOM</name>
         <company>Хлолд в дом</company>
         <url>${BASE_URL}/</url>
+        <categories>
+          ${categories.data
+            .map((type) => {
+              return type.categories
+                .map(
+                  (cat) =>
+                    `<category url="${BASE_URL}/catalog/${type.slug}/${cat.slug}" id="${cat.documentId}">${cat.name}</category>`
+                )
+                .join("");
+            })
+            .join("")}
+        </categories>
         <offers>
         ${data.data
           .map(
@@ -47,6 +61,7 @@ export async function GET() {
                   : p.price
               }</oldprice>
               <currencyId>RUR</currencyId>
+              <categoryId>${p.category?.documentId}</categoryId>
               <typePrefix>${p.category?.name}</typePrefix>
               <model>${p.series}</model>
               <vendor>${p.brand?.name}</vendor>
