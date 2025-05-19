@@ -14,6 +14,8 @@ import TestimonialsSection from "@/components/pages/penza/testimonials-section/t
 import listWorks from "@/utils/price-penza.json";
 import listAddWorks from "@/utils/additionalWorks_penza.json";
 import reviews from "@/utils/rewiews-penza.json";
+import ProductsSection from "@/components/pages/hero/description-link-section/products-section";
+import { getAllProductsApi } from "@/strapi-api/api/data/products-api";
 
 export const metadata: Metadata = {
   title: "Установка кондиционеров в Пензе — «Холод в дом»",
@@ -28,21 +30,52 @@ const title = (
   </h1>
 );
 
-const PenzaPage = () => (
-  <main>
-    <HeroBlock h1={title} />
-    <BenefitsBlock />
-    <CTABlock />
-    <FeaturesBlock />
-    <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:pt-8">
-      <h2 className="text-3xl mx-auto max-w-xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 text-center">
-        <span className="text-accent">Установка</span> и дополнительные работы
-      </h2>
-    </div>
-    <TableSection listAddWorks={listAddWorks} listWorks={listWorks} />
-    <CTABlockAction />
-    <TestimonialsSection reviewsList={reviews} />
-    <GridList list={sertifcates} />
-  </main>
-);
+const PenzaPage = async () => {
+  const paramsHit = new URLSearchParams({
+    "filters[hit][$eq]": "true",
+    "filters[available][$eq]": "true",
+    "fields[0]": "sale",
+    "fields[1]": "name",
+    "fields[2]": "price",
+    "fields[3]": "slug",
+    "fields[4]": "area_of_room",
+    "fields[5]": "series",
+    "populate[0]": "images",
+    "populate[1]": "brand",
+  });
+  const paramsSale = new URLSearchParams({
+    "filters[sale][$gt]": "0",
+    "filters[available][$eq]": "true",
+    "fields[0]": "sale",
+    "fields[1]": "name",
+    "fields[2]": "price",
+    "fields[3]": "slug",
+    "fields[4]": "area_of_room",
+    "fields[5]": "series",
+    "populate[0]": "images",
+    "populate[1]": "brand",
+  });
+
+  const productsHit = await getAllProductsApi(paramsHit.toString());
+  const productsSale = await getAllProductsApi(paramsSale.toString());
+
+  return (
+    <main>
+      <HeroBlock h1={title} />
+      <BenefitsBlock />
+      <ProductsSection products={[productsHit.data, productsSale.data]} />
+      <CTABlock />
+      <FeaturesBlock />
+      <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:pt-8">
+        <h2 className="text-3xl mx-auto max-w-xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 text-center">
+          <span className="text-accent">Установка</span> и дополнительные работы
+        </h2>
+      </div>
+      <TableSection listAddWorks={listAddWorks} listWorks={listWorks} />
+      <CTABlockAction />
+      <TestimonialsSection reviewsList={reviews} />
+      <GridList list={sertifcates} />
+    </main>
+  );
+};
 export default PenzaPage;
