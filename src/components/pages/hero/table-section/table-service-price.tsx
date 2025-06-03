@@ -1,7 +1,8 @@
+import { CostServices } from "@/strapi-api/api/data/types";
 import TableRow from "./table-row";
 
 interface TableServicePriceProps extends React.HtmlHTMLAttributes<HTMLElement> {
-  list: { title: string; model?: string; price: number | string }[];
+  list: CostServices[];
 }
 const TableServicePrice: React.FC<TableServicePriceProps> = ({
   list,
@@ -28,8 +29,8 @@ const TableServicePrice: React.FC<TableServicePriceProps> = ({
         <tbody className="bg-white divide-y divide-gray-200">
           {list?.map((i, index) => (
             <TableRow
-              key={i.model + "_" + index}
-              title={i.title}
+              key={i.documentId}
+              title={i.service}
               price={i.price}
               model={i.model}
             />

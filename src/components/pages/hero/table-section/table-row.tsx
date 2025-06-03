@@ -18,24 +18,24 @@ const TableRow: React.FC<TableRowProps> = ({
 
   return (
     <tr {...props}>
-      <td className='w-full max-w-0 py-4 pr-3 pl-4 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-0 text-balance'>
+      <td className="w-full max-w-0 py-4 pr-3 pl-4 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-0 text-balance">
         {title}
         {model && (
-          <dl className='font-normal md:hidden'>
-            <dt className='sr-only'>Модели кондиционеров</dt>
-            <dd className='mt-1 text-ellipsis whitespace-nowrap overflow-hidden text-gray-600'>
+          <dl className="font-normal md:hidden">
+            <dt className="sr-only">Модели кондиционеров</dt>
+            <dd className="mt-1 text-ellipsis whitespace-nowrap overflow-hidden text-gray-600">
               {model}
             </dd>
           </dl>
         )}
       </td>
       {model && (
-        <td className='hidden px-3 py-4 text-sm md:table-cell'>{model}</td>
+        <td className="hidden px-3 py-4 text-sm md:table-cell">{model}</td>
       )}
-      <td className='px-3 py-4 text-sm'>
-        {typeof price === "number" ? format(price) : price}
+      <td className="px-3 py-4 text-sm">
+        {!isNaN(Number(price)) ? format(Number(price)) : price}
       </td>
-      <td className='py-4 pl-3 pr-4 text-right text-smfont-medium sm:pr-0 flex justify-end'>
+      <td className="py-4 pl-3 pr-4 text-right text-smfont-medium sm:pr-0 flex justify-end">
         <ButtonText
           onClick={() =>
             onOpen(

@@ -200,3 +200,25 @@ export type FilterResponse = {
     };
   };
 };
+
+export type CostServices = {
+  id: number;
+  documentId: string;
+  service: string;
+  model: string;
+  price: string;
+};
+export type CostServicesResponse = {
+  data: CostServices[];
+  meta: Meta;
+};
+export type CostAdditionalServices = {
+  id: number;
+  documentId: string;
+  service: string;
+  price: string;
+};
+export type CostAdditionalServicesResponse = {
+  data: CostServices[];
+  meta: Meta;
+};

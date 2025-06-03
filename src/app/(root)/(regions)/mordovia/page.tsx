@@ -12,6 +12,10 @@ import DescriptionLinkSection from "@/components/pages/hero/description-link-sec
 import listWorks from "@/utils/price.json";
 import listAddWorks from "@/utils/additionalWorks.json";
 import HeroBlock from "@/components/pages/penza/main-block/hero-block";
+import {
+  getAdditionalServicesApi,
+  getServicesApi,
+} from "@/strapi-api/api/data/cost-services-api";
 
 export const metadata: Metadata = {
   title: "Кондиционеры в Мордовии — «Холод в дом»",
@@ -26,15 +30,22 @@ const title = (
   </h1>
 );
 
-const MordoviaPage = () => (
-  <main>
-    <HeroBlock h1={title} />
-    <DescriptionLinkSection />
-    <PromoSection />
-    <TableSection listAddWorks={listAddWorks} listWorks={listWorks} />
-    <TestimonialsSection />
-    <GridList list={sertifcates} />
-    {/* <SaleSection /> */}
-  </main>
-);
+const MordoviaPage = async () => {
+  const services = await getServicesApi();
+  const additionalService = await getAdditionalServicesApi();
+  return (
+    <main>
+      <HeroBlock h1={title} />
+      <DescriptionLinkSection />
+      <PromoSection />
+      <TableSection
+        listAddWorks={additionalService.data}
+        listWorks={services.data}
+      />
+      <TestimonialsSection />
+      <GridList list={sertifcates} />
+      {/* <SaleSection /> */}
+    </main>
+  );
+};
 export default MordoviaPage;

@@ -1,10 +1,14 @@
 import TableWorks from "./table-works";
 import TableServicePrice from "./table-service-price";
 import TableAddingServicePrice from "./table-adding-service-price";
+import {
+  CostAdditionalServices,
+  CostServices,
+} from "@/strapi-api/api/data/types";
 
 interface TableSectionProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
-  listWorks: { title: string; model?: string; price: number | string }[];
-  listAddWorks: { title: string; price: number | string }[];
+  listWorks: CostServices[];
+  listAddWorks: CostAdditionalServices[];
 }
 
 const TableSection: React.FC<TableSectionProps> = ({

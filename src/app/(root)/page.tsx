@@ -8,10 +8,14 @@ import TableSection from "@/components/pages/hero/table-section/table-section";
 import TestimonialsSection from "@/components/pages/hero/testimonials-section/testimonials-section";
 import DescriptionLinkSection from "@/components/pages/hero/description-link-section/description-link-section";
 
-import listWorks from "@/utils/price.json";
-import listAddWorks from "@/utils/additionalWorks.json";
+// import listWorks from "@/utils/price.json";
+// import listAddWorks from "@/utils/additionalWorks.json";
 import ProductsSection from "@/components/pages/hero/description-link-section/products-section";
 import { getAllProductsApi } from "@/strapi-api/api/data/products-api";
+import {
+  getAdditionalServicesApi,
+  getServicesApi,
+} from "@/strapi-api/api/data/cost-services-api";
 
 const Home = async () => {
   // Fetch data from Strapi API
@@ -42,12 +46,19 @@ const Home = async () => {
 
   const productsHit = await getAllProductsApi(paramsHit.toString());
   const productsSale = await getAllProductsApi(paramsSale.toString());
+  const services = await getServicesApi();
+  const additionalService = await getAdditionalServicesApi();
+
+  // console.log(additionalService.data);
 
   return (
     <main>
       <HeroBlock />
       <ProductsSection products={[productsHit.data, productsSale.data]} />
-      <TableSection listAddWorks={listAddWorks} listWorks={listWorks} />
+      <TableSection
+        listAddWorks={additionalService.data}
+        listWorks={services.data}
+      />
       <PromoSection />
       <DescriptionLinkSection />
       <TestimonialsSection />

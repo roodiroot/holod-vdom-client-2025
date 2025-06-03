@@ -16,6 +16,10 @@ import listAddWorks from "@/utils/additionalWorks_penza.json";
 import reviews from "@/utils/rewiews-penza.json";
 import ProductsSection from "@/components/pages/hero/description-link-section/products-section";
 import { getAllProductsApi } from "@/strapi-api/api/data/products-api";
+import {
+  getAdditionalServicesApi,
+  getServicesApi,
+} from "@/strapi-api/api/data/cost-services-api";
 
 export const metadata: Metadata = {
   title: "Установка кондиционеров в Пензе — «Холод в дом»",
@@ -58,6 +62,8 @@ const PenzaPage = async () => {
 
   const productsHit = await getAllProductsApi(paramsHit.toString());
   const productsSale = await getAllProductsApi(paramsSale.toString());
+  const services = await getServicesApi();
+  const additionalService = await getAdditionalServicesApi();
 
   return (
     <main>
@@ -71,7 +77,10 @@ const PenzaPage = async () => {
           <span className="text-accent">Установка</span> и дополнительные работы
         </h2>
       </div>
-      <TableSection listAddWorks={listAddWorks} listWorks={listWorks} />
+      <TableSection
+        listAddWorks={additionalService.data}
+        listWorks={services.data}
+      />
       <CTABlockAction />
       <TestimonialsSection reviewsList={reviews} />
       <GridList list={sertifcates} />

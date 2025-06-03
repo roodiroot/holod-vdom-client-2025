@@ -5,6 +5,10 @@ import { Metadata } from "next";
 
 import listWorks from "@/utils/price.json";
 import listAddWorks from "@/utils/additionalWorks.json";
+import {
+  getAdditionalServicesApi,
+  getServicesApi,
+} from "@/strapi-api/api/data/cost-services-api";
 
 export const metadata: Metadata = {
   title: "Цены на услуги",
@@ -12,7 +16,9 @@ export const metadata: Metadata = {
     'Актуальные цены на услуги "Холод в дом", Звоните, уточняйте по поводу индивидуальных условий.',
 };
 
-const PricePage = () => {
+const PricePage = async () => {
+  const services = await getAdditionalServicesApi();
+  const additionalService = await getAdditionalServicesApi();
   return (
     <div className="bg-white">
       <div className="py-24 sm:py-32">
@@ -27,7 +33,10 @@ const PricePage = () => {
               Цены на услуги
             </h1>
           </div>
-          <TableSection listAddWorks={listAddWorks} listWorks={listWorks} />
+          <TableSection
+            listAddWorks={additionalService.data}
+            listWorks={services.data}
+          />
         </div>
       </div>
     </div>
