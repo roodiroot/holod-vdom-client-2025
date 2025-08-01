@@ -23,7 +23,8 @@ const HeroBlock = ({ h1 }: { h1: React.ReactNode }) => {
               <Image
                 width={669}
                 height={527}
-                src="/image/penza-hero.jpg"
+                // src="/image/penza-hero.jpg"
+                src="/image/hero-offer.jpg"
                 alt="penza"
                 className="h-full w-full object-cover object-center"
               />

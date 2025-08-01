@@ -1,7 +1,7 @@
 import { sertifcates } from "@/utils/constance";
 
 import GridList from "@/components/pages/hero/grid-section/grid-list";
-import HeroBlock from "@/components/pages/hero/main-block/hero-block";
+// import HeroBlock from "@/components/pages/hero/main-block/hero-block";
 import PromoSection from "@/components/pages/hero/promo-section/promo-section";
 // import SaleSection from '@/components/pages/hero/sale-section/sale-section';
 import TableSection from "@/components/pages/hero/table-section/table-section";
@@ -16,6 +16,14 @@ import {
   getAdditionalServicesApi,
   getServicesApi,
 } from "@/strapi-api/api/data/cost-services-api";
+import HeroBlock from "@/components/pages/penza/main-block/hero-block";
+
+const title = (
+  <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+    Кондиционер <span className="text-accent">+ бесплатная установка</span> до
+    15.08.2025 <span className="text-accent">*</span>
+  </h1>
+);
 
 const Home = async () => {
   // Fetch data from Strapi API
@@ -53,7 +61,8 @@ const Home = async () => {
 
   return (
     <main>
-      <HeroBlock />
+      {/* <HeroBlock /> */}
+      <HeroBlock h1={title} />
       <ProductsSection products={[productsHit.data, productsSale.data]} />
       <TableSection
         listAddWorks={additionalService.data}
