@@ -14,6 +14,8 @@ export const metadata: Metadata = {
 export default async function BrandsPage() {
   const brands = await getAllBrandsApi();
 
+  // console.log("Brands data:", brands);
+
   return (
     <div className="bg-white">
       <div className="py-24 sm:py-32">

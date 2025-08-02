@@ -10,6 +10,7 @@ export const getAllBrandsApi = async (params?: string): Promise<BrandData> => {
     const response = await fetch(url, {
       method: "GET",
       signal: controller.signal,
+      next: { revalidate: 60 },
     });
 
     clearTimeout(timeout);

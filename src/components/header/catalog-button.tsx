@@ -16,6 +16,8 @@ const CatalogButton = () => {
     isError: isErrorBrands,
   } = useFetchBrands();
 
+  // console.log("CatalogButton dataBrands:", dataBrands);
+
   return (
     <div className="relative group flex items-center text-sm font-medium text-gray-700 hover:text-gray-800 transition">
       <button className="flex items-center text-sm font-bold text-gray-700 hover:text-gray-800">
