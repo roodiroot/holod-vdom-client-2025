@@ -18,6 +18,7 @@ interface CardProductProps extends React.HtmlHTMLAttributes<HTMLElement> {
   area_of_room?: string;
   series?: string;
   sale?: number;
+  btu?: string | null;
   images?: ImageForProduct[] | null;
 }
 
@@ -29,6 +30,7 @@ const CardProductStrapi: React.FC<CardProductProps> = ({
   series,
   sale,
   images,
+  btu,
   ...props
 }) => {
   const { mutate } = useIncrementPopularity();
@@ -42,7 +44,8 @@ const CardProductStrapi: React.FC<CardProductProps> = ({
   };
 
   const slider = images?.map(
-    (i) => `${process.env.NEXT_PUBLIC_URL}${i.formats.small.url}`
+    (i) =>
+      `${process.env.NEXT_PUBLIC_URL}${i?.formats?.small?.url || i?.url}` || ""
   );
 
   return (
@@ -66,16 +69,26 @@ const CardProductStrapi: React.FC<CardProductProps> = ({
         <span></span>
         <h3 className="text-sm font-medium text-gray-900">{title}</h3>
         <div className="text-xs">
-          <span>
-            <span>{series}</span>
-            <br />
-          </span>
-          <span>
+          {series && (
             <span>
-              Помещение до {area_of_room} м<sup>2</sup>
+              <span>Серия: {series}</span>
+              <br />
             </span>
-            <br />
-          </span>
+          )}
+          {area_of_room && (
+            <span>
+              <span>
+                Помещение до {area_of_room} м<sup>2</sup>
+              </span>
+              <br />
+            </span>
+          )}
+          {btu && (
+            <span>
+              <span>Мощность охлаждения {btu} BTU</span>
+              <br />
+            </span>
+          )}
         </div>
         <div className="flex flex-1 flex-col justify-end">
           <div className="flex justify-between items-end">

@@ -65,7 +65,7 @@ const ProductsBody: React.FC<ProductsBodyProps> = ({
                   </div>
                 ))
               : productsList.map((product) => {
-                  console.log(product);
+                  // console.log(product);
                   return (
                     <CardProductStrapi
                       key={product.slug}
@@ -76,6 +76,7 @@ const ProductsBody: React.FC<ProductsBodyProps> = ({
                       series={product.series}
                       sale={product.sale}
                       images={product.images}
+                      btu={product.cooling_capacity}
                     />
                   );
                 })}
