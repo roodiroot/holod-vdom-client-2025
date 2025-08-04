@@ -23,29 +23,33 @@ const CatalogButton = () => {
       <button className="flex items-center text-sm font-bold text-gray-700 hover:text-gray-800">
         Каталог
       </button>
-      <div className="absolute top-[95%] -left-6 hidden group-hover:block bg-white shadow-lg py-4 px-8 rounded-lg z-10">
-        <ul className="flex gap-6">
-          <li>
-            <Link
-              href={"/brands"}
-              className="hover:text-accent whitespace-nowrap font-bold"
-            >
-              Бренды
-            </Link>
-            <ul className=" space-y-3 mt-5">
-              {!isLoadingBrands &&
-                !isErrorBrands &&
-                dataBrands?.data.map((item) => (
-                  <li key={item.documentId} className="whitespace-nowrap">
-                    <Link
-                      className="hover:text-accent"
-                      href={`/brands/${item.slug}`}
-                    >
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-            </ul>
+      <div className="w-auto absolute top-[95%] -left-6 hidden group-hover:block bg-white border shadow-lg py-4 px-8 rounded-lg z-10">
+        <ul className="flex gap-12">
+          <li className="">
+            <div className="block">
+              <Link
+                href={"/brands"}
+                className="hover:text-accent whitespace-nowrap font-bold"
+              >
+                Бренды
+              </Link>
+              <div className="mt-5 block">
+                <ul className="grid grid-rows-5 grid-flow-col gap-x-6 gap-y-3">
+                  {!isLoadingBrands &&
+                    !isErrorBrands &&
+                    dataBrands?.data.map((item) => (
+                      <li key={item.documentId} className="whitespace-nowrap">
+                        <Link
+                          className="hover:text-accent"
+                          href={`/brands/${item.slug}`}
+                        >
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            </div>
           </li>
           {!isLoadingProductCatalog &&
             !isErrorProductCatalog &&
