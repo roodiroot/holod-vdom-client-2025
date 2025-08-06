@@ -43,9 +43,9 @@ export default function RootLayout({
     <html lang="ru">
       <body className={beautifulFont.className}>
         <TanstackProvider>{children}</TanstackProvider>
-        <Suspense>
+        {/* <Suspense>
           <Metrika />
-        </Suspense>
+        </Suspense> */}
       </body>
     </html>
   );
