@@ -26,6 +26,7 @@ const config = {
         "accent-500": "#84B9F6",
         "accent-600": "#2F84E7",
         accent: "#2F84E7",
+        primary: "#1E40AF",
       },
       borderRadius: {
         md: "16px",

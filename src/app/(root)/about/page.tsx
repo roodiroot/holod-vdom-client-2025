@@ -5,7 +5,7 @@ import AboutScreen from "@/components/pages/about/about-screen";
 import AboutStory from "@/components/pages/about/about-story";
 import Pattern from "@/components/ui/elements/pattern";
 import GridList from "@/components/pages/hero/grid-section/grid-list";
-import { sertifcates } from "@/utils/constance";
+import { getAllSertificatApi } from "@/strapi-api/api/data/sertificat-api";
 
 export const metadata: Metadata = {
   title: "О компании",
@@ -13,7 +13,12 @@ export const metadata: Metadata = {
     '"Холод в Дом" - климатическая компания основанная в 2019 году. Основной деятельностью компании является поставка и монтаж климатической оборудования.',
 };
 
-const About = () => {
+const About = async () => {
+  const paramsSert = new URLSearchParams({
+    "populate[0]": "img",
+  });
+
+  const sertifcates = await getAllSertificatApi(paramsSert.toString());
   return (
     <>
       <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
@@ -36,7 +41,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <GridList list={sertifcates} />
+      <GridList list={sertifcates.data} />
     </>
   );
 };

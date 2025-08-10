@@ -15,6 +15,7 @@ import { usePathname } from "next/navigation";
 type InputsContactForm = {
   name: string;
   phone: string;
+  policy?: boolean;
 };
 
 interface ModalOrderFormProps extends React.HtmlHTMLAttributes<HTMLElement> {

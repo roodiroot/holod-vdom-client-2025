@@ -3,6 +3,7 @@ import Logo from "../ui/logo";
 import FormFooter from "./form-footer";
 import ListLinkFooter from "./list-link-footer";
 import ListLinkFooterCatalog from "./list-link-footer-catalog";
+import InstallmentBuner from "./installment";
 
 const menuList = [
   { link: "/catalog", title: "Каталог" },
@@ -36,13 +37,15 @@ const Footer = () => {
             <FormFooter />
           </div>
         </div>
-        <div className="border-t border-gray-200 py-10 text-center">
-          <p className="text-sm ">
-            © 2024 Холод в дом.{" "}
-            <Link href={"/policy"} className="underline">
-              Политика конфиденциальности
-            </Link>
-          </p>
+        <InstallmentBuner />
+        <div className="border-t border-gray-200 py-6 flex flex-col gap-y-2 gap-x-4 sm:flex-row">
+          <p className="text-xs">© 2025 Холод в дом. </p>
+          <Link href={"/docs/policy"} className="text-xs">
+            Политика конфиденциальности
+          </Link>
+          <Link href={"/docs/terms"} className="text-xs">
+            Согласие на обработку персональных данных
+          </Link>
         </div>
       </div>
     </footer>

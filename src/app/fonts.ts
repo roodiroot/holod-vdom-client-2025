@@ -26,6 +26,26 @@ export const beautifulFont = localFont({
   ],
 });
 
+export const tinkoffSans = localFont({
+  src: [
+    {
+      path: "../assets/fonts/TinkoffSans-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../assets/fonts/TinkoffSans-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../assets/fonts/TinkoffSans-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+});
+
 // If loading a variable font, you don't need to specify the font weight
 export const montserrat = Inter({
   subsets: ["cyrillic"],

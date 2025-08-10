@@ -6,7 +6,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <>
       <Header />
-      <div className='min-h-[320px]'>{children}</div>
+      <div className="min-h-[320px]">{children}</div>
       <Footer />
       <Absolute />
     </>

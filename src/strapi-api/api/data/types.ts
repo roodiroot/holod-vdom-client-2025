@@ -222,3 +222,15 @@ export type CostAdditionalServicesResponse = {
   data: CostServices[];
   meta: Meta;
 };
+
+export interface SertItem {
+  id: number;
+  documentId: string;
+  title: string;
+  date: string; // можно заменить на Date, если хочешь парсить дату
+  img: ImageForProduct | null;
+}
+export interface SertificatData {
+  data: SertItem[];
+  meta: Meta;
+}

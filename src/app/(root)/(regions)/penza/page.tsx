@@ -1,7 +1,5 @@
 import { Metadata } from "next";
 
-import { sertifcates } from "@/utils/constance";
-
 import CTABlock from "@/components/pages/penza/cta-block/cta-block";
 import GridList from "@/components/pages/hero/grid-section/grid-list";
 import HeroBlock from "@/components/pages/penza/main-block/hero-block";
@@ -10,9 +8,6 @@ import BenefitsBlock from "@/components/pages/penza/benefits/benefits-block";
 import TableSection from "@/components/pages/hero/table-section/table-section";
 import CTABlockAction from "@/components/pages/penza/cta-block/cta-block-action";
 import TestimonialsSection from "@/components/pages/penza/testimonials-section/testimonials-section";
-
-import listWorks from "@/utils/price-penza.json";
-import listAddWorks from "@/utils/additionalWorks_penza.json";
 import reviews from "@/utils/rewiews-penza.json";
 import ProductsSection from "@/components/pages/hero/description-link-section/products-section";
 import { getAllProductsApi } from "@/strapi-api/api/data/products-api";
@@ -20,19 +15,13 @@ import {
   getAdditionalServicesApi,
   getServicesApi,
 } from "@/strapi-api/api/data/cost-services-api";
+import { getAllSertificatApi } from "@/strapi-api/api/data/sertificat-api";
 
 export const metadata: Metadata = {
   title: "Установка кондиционеров в Пензе — «Холод в дом»",
   description:
     "Профессиональная установка кондиционеров в Пензе. 12 месяцев гарантии, более 5 лет опыта и сотни положительных отзывов.",
 };
-
-// const title = (
-//   <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-//     Продаем <span className="text-accent">и</span> устанавливаем кондиционеры в{" "}
-//     <span className="text-accent">Пензе</span>
-//   </h1>
-// );
 
 const title = (
   <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
@@ -66,11 +55,15 @@ const PenzaPage = async () => {
     "populate[0]": "images",
     "populate[1]": "brand",
   });
+  const paramsSert = new URLSearchParams({
+    "populate[0]": "img",
+  });
 
   const productsHit = await getAllProductsApi(paramsHit.toString());
   const productsSale = await getAllProductsApi(paramsSale.toString());
   const services = await getServicesApi();
   const additionalService = await getAdditionalServicesApi();
+  const sertifcates = await getAllSertificatApi(paramsSert.toString());
 
   return (
     <main>
@@ -90,7 +83,7 @@ const PenzaPage = async () => {
       />
       <CTABlockAction />
       <TestimonialsSection reviewsList={reviews} />
-      <GridList list={sertifcates} />
+      <GridList list={sertifcates.data} />
     </main>
   );
 };

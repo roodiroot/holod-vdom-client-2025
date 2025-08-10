@@ -35,7 +35,7 @@ const ModalWindow: React.FC = () => {
         <ModalForm closeModal={onClose} text={text} />
         <div className="text-sm">
           **Отправляя данную форму вы соглашаетесь с{" "}
-          <Link onClick={onClose} href={"/policy"} className="text-accent">
+          <Link onClick={onClose} href={"/docs/policy"} className="text-accent">
             политикой конфиденциальности
           </Link>
         </div>

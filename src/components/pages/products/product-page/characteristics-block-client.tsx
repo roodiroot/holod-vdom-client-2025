@@ -14,6 +14,7 @@ import { format } from "@/lib/format";
 import AddingBasket from "./server-component/adding-basket";
 import CharacteristicsSkeleton from "./characteristics-skeleton";
 import { Char } from "@/strapi-api/api/data/types";
+import InstallmentButton from "./installment-button";
 
 interface CharacteristicsBlockProps
   extends React.HtmlHTMLAttributes<HTMLElement> {
@@ -102,6 +103,9 @@ const CharacteristicsBlockClient: React.FC<CharacteristicsBlockProps> = ({
         name={name}
         price={format(price)}
       />
+      <div className="mt-4">
+        <InstallmentButton price={price} />
+      </div>
       <section className="mt-12">
         <h2 className="sr-only">Подробное описание</h2>
         <Accordion
