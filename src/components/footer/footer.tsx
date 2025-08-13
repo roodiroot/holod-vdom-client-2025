@@ -40,6 +40,9 @@ const Footer = () => {
         <InstallmentBuner />
         <div className="border-t border-gray-200 py-6 flex flex-col gap-y-2 gap-x-4 sm:flex-row">
           <p className="text-xs">© 2025 Холод в дом. </p>
+          <Link href={"/docs/oferta"} className="text-xs">
+            Оферта
+          </Link>
           <Link href={"/docs/policy"} className="text-xs">
             Политика конфиденциальности
           </Link>

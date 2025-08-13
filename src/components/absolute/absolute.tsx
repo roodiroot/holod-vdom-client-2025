@@ -6,6 +6,7 @@ import SearchWindow from "./search-window";
 import ImageShow from "./image-show";
 import CallWidget from "./widgets/call-widget";
 import ModalOrder from "./modal-order";
+import CookieBanner from "./cookie-banner";
 
 const Absolute = () => {
   return (
@@ -18,6 +19,7 @@ const Absolute = () => {
       <ModalOrder />
       <SearchWindow />
       <ImageShow />
+      <CookieBanner />
     </>
   );
 };
