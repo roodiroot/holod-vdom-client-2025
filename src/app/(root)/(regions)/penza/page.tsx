@@ -25,8 +25,7 @@ export const metadata: Metadata = {
 
 const title = (
   <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-    Кондиционер <span className="text-accent">+ бесплатная установка</span> до
-    15.08.2025 <span className="text-accent">*</span>
+    Установка кондиционера в <span className="text-accent">подарок</span>
   </h1>
 );
 
