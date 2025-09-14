@@ -6,6 +6,7 @@ import BasketItem from "./basket-item";
 import SearchButton from "./search-button";
 import DinamicNumber from "./dinamic-number";
 import CatalogButton from "./catalog-button";
+import { routes } from "../../../static-routes";
 
 const Header = () => {
   return (
@@ -27,18 +28,15 @@ const Header = () => {
             <div className="hidden lg:ml-8 lg:block lg:self-stretch">
               <div className="flex h-full space-x-8">
                 <CatalogButton />
-                <Link
-                  href={"/about"}
-                  className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800 transition"
-                >
-                  О нас
-                </Link>
-                <Link
-                  href={"/contacts"}
-                  className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800 transition"
-                >
-                  Контакты
-                </Link>
+                {routes.staticPage.map((i) => (
+                  <Link
+                    key={i.title}
+                    href={i.link}
+                    className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800 transition"
+                  >
+                    {i.title}
+                  </Link>
+                ))}
               </div>
             </div>
             <div className="ml-auto flex items-center">

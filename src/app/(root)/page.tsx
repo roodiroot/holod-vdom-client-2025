@@ -13,6 +13,8 @@ import {
 } from "@/strapi-api/api/data/cost-services-api";
 import HeroBlock from "@/components/pages/penza/main-block/hero-block";
 import { getAllSertificatApi } from "@/strapi-api/api/data/sertificat-api";
+import { getAllBlogApi } from "@/strapi-api/api/data/blog-api";
+import BlogSection from "@/components/pages/hero/blog-section/blog-section";
 
 const title = (
   <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
@@ -49,14 +51,20 @@ const Home = async () => {
   const paramsSert = new URLSearchParams({
     "populate[0]": "img",
   });
+  const paramsBlog = new URLSearchParams({
+    sort: "publishedAt:desc",
+    "populate[0]": "tags",
+    "pagination[limit]": "3",
+  });
 
   const productsHit = await getAllProductsApi(paramsHit.toString());
   const productsSale = await getAllProductsApi(paramsSale.toString());
   const services = await getServicesApi();
   const additionalService = await getAdditionalServicesApi();
   const sertifcates = await getAllSertificatApi(paramsSert.toString());
+  const blogs = await getAllBlogApi(paramsBlog.toString());
 
-  // console.log(sertifcates);
+  // console.log(blogs);
 
   return (
     <main>
@@ -67,6 +75,7 @@ const Home = async () => {
         listAddWorks={additionalService.data}
         listWorks={services.data}
       />
+      <BlogSection articles={blogs.data} />
       <PromoSection />
       <DescriptionLinkSection />
       <TestimonialsSection />

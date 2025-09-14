@@ -8,6 +8,7 @@ import MenuLinkHref from "../menu-link-href";
 
 import { useFetchProductsCatalog } from "@/strapi-api/queries/strapi-queries/catalog-queries";
 import { useFetchBrands } from "@/strapi-api/queries/strapi-queries/brands-queries";
+import { routes } from "../../../../static-routes";
 
 const MenuBody = ({ onClose }: { onClose: () => void }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -87,8 +88,14 @@ const MenuBody = ({ onClose }: { onClose: () => void }) => {
           </ul>
         )}
       </div>
-      <MenuLinkHref label="О нас" href="/about" onClick={onClose} />
-      <MenuLinkHref label="Контакты" href="/contacts" onClick={onClose} />
+      {routes.staticPage.map((i) => (
+        <MenuLinkHref
+          key={i.title}
+          label={i.title}
+          href={i.link}
+          onClick={onClose}
+        />
+      ))}
     </div>
   );
 };

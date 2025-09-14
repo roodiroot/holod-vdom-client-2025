@@ -16,6 +16,8 @@ import {
   getServicesApi,
 } from "@/strapi-api/api/data/cost-services-api";
 import { getAllSertificatApi } from "@/strapi-api/api/data/sertificat-api";
+import { getAllBlogApi } from "@/strapi-api/api/data/blog-api";
+import BlogSection from "@/components/pages/hero/blog-section/blog-section";
 
 export const metadata: Metadata = {
   title: "Установка кондиционеров в Пензе — «Холод в дом»",
@@ -57,12 +59,18 @@ const PenzaPage = async () => {
   const paramsSert = new URLSearchParams({
     "populate[0]": "img",
   });
+  const paramsBlog = new URLSearchParams({
+    sort: "publishedAt:desc",
+    "populate[0]": "tags",
+    "pagination[limit]": "3",
+  });
 
   const productsHit = await getAllProductsApi(paramsHit.toString());
   const productsSale = await getAllProductsApi(paramsSale.toString());
   const services = await getServicesApi();
   const additionalService = await getAdditionalServicesApi();
   const sertifcates = await getAllSertificatApi(paramsSert.toString());
+  const blogs = await getAllBlogApi(paramsBlog.toString());
 
   return (
     <main>
@@ -80,6 +88,7 @@ const PenzaPage = async () => {
         listAddWorks={additionalService.data}
         listWorks={services.data}
       />
+      <BlogSection articles={blogs.data} />
       <CTABlockAction />
       <TestimonialsSection reviewsList={reviews} />
       <GridList list={sertifcates.data} />

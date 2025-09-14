@@ -234,3 +234,21 @@ export interface SertificatData {
   data: SertItem[];
   meta: Meta;
 }
+
+export interface Blog {
+  id: number;
+  documentId: string;
+  title: string;
+  slug: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date;
+  content?: string;
+  tags?: { id: number; tag: string }[] | null;
+  image?: ImageForProduct | null;
+}
+
+export interface BlogData {
+  data: Blog[];
+  meta: Meta;
+}

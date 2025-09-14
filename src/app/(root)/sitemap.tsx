@@ -1,3 +1,4 @@
+import { getAllBlogApi } from "@/strapi-api/api/data/blog-api";
 import { getAllBrandsApi } from "@/strapi-api/api/data/brands-api";
 import { getAllCatalogApi } from "@/strapi-api/api/data/catalog-api";
 import { getAllProductsApi } from "@/strapi-api/api/data/products-api";
@@ -78,6 +79,12 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: "https://holod-vdom.ru/blog",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
   ];
 
   await getAllCatalogApi().then((data) =>
@@ -114,6 +121,17 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     data.data.map((i) => {
       dinamicPages.push({
         url: `https://holod-vdom.ru/catalog/product/${i.slug}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.8,
+      });
+    })
+  );
+
+  await getAllBlogApi().then((data) =>
+    data.data.map((i) => {
+      dinamicPages.push({
+        url: `https://holod-vdom.ru/blog/${i.slug}`,
         lastModified: new Date(),
         changeFrequency: "monthly",
         priority: 0.8,

@@ -12,6 +12,8 @@ import {
   getServicesApi,
 } from "@/strapi-api/api/data/cost-services-api";
 import { getAllSertificatApi } from "@/strapi-api/api/data/sertificat-api";
+import { getAllBlogApi } from "@/strapi-api/api/data/blog-api";
+import BlogSection from "@/components/pages/hero/blog-section/blog-section";
 
 export const metadata: Metadata = {
   title: "Кондиционеры в Мордовии — «Холод в дом»",
@@ -29,10 +31,16 @@ const MordoviaPage = async () => {
   const paramsSert = new URLSearchParams({
     "populate[0]": "img",
   });
+  const paramsBlog = new URLSearchParams({
+    sort: "publishedAt:desc",
+    "populate[0]": "tags",
+    "pagination[limit]": "3",
+  });
 
   const services = await getServicesApi();
   const additionalService = await getAdditionalServicesApi();
   const sertifcates = await getAllSertificatApi(paramsSert.toString());
+  const blogs = await getAllBlogApi(paramsBlog.toString());
   return (
     <main>
       <HeroBlock h1={title} />
@@ -42,6 +50,7 @@ const MordoviaPage = async () => {
         listAddWorks={additionalService.data}
         listWorks={services.data}
       />
+      <BlogSection articles={blogs.data} />
       <TestimonialsSection />
       <GridList list={sertifcates.data} />
       {/* <SaleSection /> */}
