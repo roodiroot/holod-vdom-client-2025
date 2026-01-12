@@ -13,6 +13,7 @@ import { beautifulFont } from "@/app/fonts";
 import { useFetchAllProducts } from "@/strapi-api/queries/strapi-queries/product-queries";
 import { Product } from "@/strapi-api/api/data/types";
 import { updatePopularityApi } from "@/strapi-api/api/data/popularity-api";
+import { redirect } from "next/navigation";
 
 type Props = {
   params: { id: string };
@@ -21,6 +22,10 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = (await params).id;
   const product = await getProductBySlugApi(id);
+
+  if (!product?.available) {
+    return redirect("/not-found");
+  }
 
   return {
     title: product.brand?.name + " " + product?.name,
