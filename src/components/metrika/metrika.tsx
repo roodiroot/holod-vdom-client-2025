@@ -26,6 +26,14 @@ export function Metrika() {
         ym(96992027, 'init', {webvisor:true, clickmap:true, accurateTrackBounce:true, trackLinks:true});
       `}
       </Script>
+      {/* <script src="//cdn.callibri.ru/callibri.js" type="text/javascript" charset="utf-8" defer></script> */}
+      <Script
+        src="//cdn.callibri.ru/callibri.js"
+        type="text/javascript"
+        charSet="utf-8"
+        defer
+        strategy="afterInteractive"
+      />
     </>
   );
 }

@@ -18,7 +18,7 @@ import BlogSection from "@/components/pages/hero/blog-section/blog-section";
 
 const title = (
   <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-    Установка кондиционера в <span className="text-accent">подарок</span>
+    Подбор и установка <span className="text-accent">кондиционеров</span>
   </h1>
 );
 
