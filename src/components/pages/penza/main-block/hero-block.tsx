@@ -13,8 +13,8 @@ const HeroBlock = ({ h1 }: { h1: React.ReactNode }) => {
                 {h1}
                 <p className="mt-6 md:mt-8 text-xl ">
                   Идеальный климат в&nbsp;вашем доме: лучшие модели
-                  кондиционеров, качественный авторизованный сервис
-                  и&nbsp;3&nbsp;года гарантии.
+                  кондиционеров, качественный авторизованный сервис,
+                  от&nbsp;3&nbsp;лет гарантии.
                 </p>
                 <HeroAction className="mt-6 md:mt-8 lg:mt-16" />
               </div>
@@ -24,7 +24,7 @@ const HeroBlock = ({ h1 }: { h1: React.ReactNode }) => {
                 width={669}
                 height={527}
                 // src="/image/penza-hero.jpg"
-                src="/image/main_page.jpg"
+                src="/image/main_page_logo.jpg"
                 alt="penza"
                 className="h-full w-full object-cover object-center"
               />

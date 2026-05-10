@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import useModal from "@/hooks/use-modal";
 import { cn } from "@/lib/utils";
+import PhoneCall from "./phone-call";
 
 interface TableWorksProps extends React.HtmlHTMLAttributes<HTMLElement> {
   description: string;
@@ -32,12 +33,7 @@ const TableWorks: React.FC<TableWorksProps> = ({
       </div>
       {children}
       {info && <p className="mt-6 text-sm text-balance">{info}</p>}
-      <span className="text-sm">
-        Телефон для заказа или консультации{" "}
-        <a href="tel:+79050096888" className="text-accent font-medium">
-          +7 (905) 009 68 88
-        </a>
-      </span>
+      <PhoneCall />
     </div>
   );
 };

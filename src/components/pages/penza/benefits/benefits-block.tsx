@@ -1,6 +1,7 @@
+import PhoneCall from "../../hero/table-section/phone-call";
 import BenifitsItem from "./benifits-item";
 
-interface BenefitsBlockProps extends React.HtmlHTMLAttributes<HTMLElement> {}
+interface BenefitsBlockProps extends React.HtmlHTMLAttributes<HTMLElement> { }
 
 const benefitsList = [
   {
@@ -45,6 +46,7 @@ const BenefitsBlock: React.FC<BenefitsBlockProps> = ({ ...props }) => {
             description={i.description}
           />
         ))}
+        <PhoneCall />
       </div>
     </div>
   );

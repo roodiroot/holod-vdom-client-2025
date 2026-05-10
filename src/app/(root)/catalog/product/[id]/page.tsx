@@ -2,7 +2,6 @@ import { Metadata } from "next";
 
 import Breadcrumbs from "@/components/ui/breadcrumbs";
 import {
-  getAllProductsApi,
   getProductBySlugApi,
 } from "@/strapi-api/api/data/products-api";
 import SliderElement from "@/components/pages/products/product-page/slider-element";
@@ -10,8 +9,6 @@ import SliderPageSkeleton from "@/components/pages/products/slider-page-skeleton
 import CharacteristicsBlockClient from "@/components/pages/products/product-page/characteristics-block-client";
 import { cn } from "@/lib/utils";
 import { beautifulFont } from "@/app/fonts";
-import { useFetchAllProducts } from "@/strapi-api/queries/strapi-queries/product-queries";
-import { Product } from "@/strapi-api/api/data/types";
 import { updatePopularityApi } from "@/strapi-api/api/data/popularity-api";
 import { redirect } from "next/navigation";
 

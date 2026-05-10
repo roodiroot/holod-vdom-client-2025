@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ProductsSaleCarousel from "./products-carousel";
 import { Product } from "@/strapi-api/api/data/types";
+import PhoneCall from "../table-section/phone-call";
 
 const ProductsSection: React.FC<{ products: Product[][] }> = ({ products }) => (
   <section className="bg-gray-50">
@@ -36,6 +37,9 @@ const ProductsSection: React.FC<{ products: Product[][] }> = ({ products }) => (
         <div className="relative z-10 w-full mt-4">
           <ProductsSaleCarousel products={products[1]} />
         </div>
+      </div>
+      <div className="mt-10">
+        <PhoneCall />
       </div>
     </div>
   </section>

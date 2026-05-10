@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import useModal from "@/hooks/use-modal";
 
-interface HeroActionProps extends React.HtmlHTMLAttributes<HTMLDivElement> {}
+interface HeroActionProps extends React.HtmlHTMLAttributes<HTMLDivElement> { }
 const HeroAction: React.FC<HeroActionProps> = ({ className }) => {
   const { onOpen } = useModal();
   return (
@@ -17,7 +17,7 @@ const HeroAction: React.FC<HeroActionProps> = ({ className }) => {
         }
         className={className}
       >
-        Консультация
+        Оставить заявку
       </Button>
     </>
   );
