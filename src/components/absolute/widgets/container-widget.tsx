@@ -11,7 +11,7 @@ const ContainerWidger: React.FC<ContainerWidgetProps> = ({
   return (
     <div
       {...props}
-      className=" w-[75px] h-[75px] relative flex cursor-pointer rounded-full shadow-xl"
+      className=" size-[60px] relative flex cursor-pointer rounded-full shadow-xl"
     >
       <span
         className={cn(
@@ -19,10 +19,10 @@ const ContainerWidger: React.FC<ContainerWidgetProps> = ({
           !open && "animate-ping"
         )}
       ></span>
-      <span className="relative inline-flex rounded-full w-[75px] h-[75px] bg-accent-600">
+      <span className="relative inline-flex rounded-full size-[60px] bg-accent-600">
         <Icon
-          variant="chat"
-          className="absolute rotate-[12deg] fill-white top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10"
+          variant="snow"
+          className="absolute rotate-[12deg] fill-white top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 size-8"
         />
       </span>
     </div>

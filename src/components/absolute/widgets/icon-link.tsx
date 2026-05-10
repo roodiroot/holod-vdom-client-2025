@@ -13,6 +13,7 @@ const IconLink: React.FC<{ index: number; link: SOCIALType }> = ({
   return (
     <motion.a
       href={link.link}
+      target="_blank"
       style={{ background: link.bg, top: translate }}
       initial={{
         opacity: 0,
